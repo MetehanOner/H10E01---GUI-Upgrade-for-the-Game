@@ -64,7 +64,7 @@ public class Game extends Application {
                 Button button = new Button();
                 button.setTextAlignment(TextAlignment.CENTER);
                 button.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-                button.setStyle("-fx-background-color: rgba(244, 67, 54, 0.75); " +
+                button.setStyle("-fx-background-color: rgb(245,187,184); " +
                         "-fx-border-color: rgba(255, 255, 255, 0.9);");
                 buttons[i][j] = button;
 
@@ -126,10 +126,10 @@ public class Game extends Application {
 
         VBox root = new VBox();
         root.setSpacing(15);
-        Label label1 = new Label("Indiana Jones ITP :)");
-        label1.setFont(new Font("SF Fedora Shadow", 40));
-        label1.setStyle("-fx-text-fill: rgb(236, 172, 111);");
-        root.getChildren().add(label1);
+        //Label label1 = new Label("Indiana Jones ITP :)");
+        //label1.setFont(new Font("SF Fedora Shadow", 40));
+        //label1.setStyle("-fx-text-fill: rgb(236, 172, 111);");
+        //root.getChildren().add(label1);
         root.getChildren().add(gpane);
         root.getChildren().add(boxes);
         root.setAlignment(Pos.CENTER);
