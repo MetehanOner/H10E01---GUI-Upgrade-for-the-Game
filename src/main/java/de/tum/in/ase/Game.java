@@ -60,8 +60,8 @@ public class Game extends Application {
                 Button button = new Button();
                 button.setTextAlignment(TextAlignment.CENTER);
                 button.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-                button.setStyle("-fx-background-color: rgb(245,187,184); " +
-                        "-fx-border-color: rgba(255, 255, 255, 0.9);");
+                button.setStyle("-fx-background-color: rgb(245,187,184); "
+                        + "-fx-border-color: rgba(255, 255, 255, 0.9);");
                 buttons[i][j] = button;
 
                 gridPane.add(button, i, j);
