@@ -343,6 +343,11 @@ public class Game extends Application {
     private void informationAlert(String title, String content) {
         // TODO: Task 2.2, Displaying information alerts.
 
+            alert.setTitle(title);
+            alert.setContentText(content);
+            alert.showAndWait();
+
+
     }
 
     /**
