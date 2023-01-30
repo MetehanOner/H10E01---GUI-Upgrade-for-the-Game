@@ -53,9 +53,9 @@ public class Game extends Application {
         directionButtons = new ArrayList<>();
         specialDirectionButtons = new ArrayList<>();
 
-        for (int i=0; i < gameBoard.getSizeX(); i++) {
+        for (int i = 0; i < gameBoard.getSizeX(); i++) {
 
-            for (int j=0; j < gameBoard.getSizeY(); j++) {
+            for (int j = 0; j < gameBoard.getSizeY(); j++) {
 
                 Button button = new Button();
                 button.setTextAlignment(TextAlignment.CENTER);
