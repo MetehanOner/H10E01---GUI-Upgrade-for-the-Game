@@ -2,6 +2,7 @@ package de.tum.in.ase;
 
 import de.tum.in.ase.logic.*;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -10,7 +11,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game extends Application {
     private GameBoard gameBoard;
@@ -44,13 +47,92 @@ public class Game extends Application {
         this.gameBoard = new GameBoard(SIZE_X, SIZE_Y);
 
         // TODO: Task 1.1, Initialization of the gameBoard visualization.
+        GridPane gpane = new GridPane();
 
-        // TODO: Task 1.2, Movement buttons configuration.
+        gpane.setHgap(3);
+        gpane.setVgap(2);
 
-        // TODO: Task 1.3, Ability buttons configuration.
+        directionButtons = new ArrayList<>();
+        specialDirectionButtons = new ArrayList<>();
+
+        for (int i=0; i < gameBoard.getSizeX(); i++) {
+
+            for (int j=0; j < gameBoard.getSizeY(); j++) {
+
+                Button button = new Button();
+                button.setTextAlignment(TextAlignment.CENTER);
+                button.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+                button.setStyle("-fx-background-color: rgba(244, 67, 54, 0.75); " +
+                        "-fx-border-color: rgba(255, 255, 255, 0.9);");
+                buttons[i][j] = button;
+                button.setAlignment(Pos.CENTER);
+
+                gpane.add(button, i, j);
+
+                //gpane.setAlignment(Pos.CENTER);
+
+            }
+
+        }
+
+        Button buttonUP = new Button("Up");
+        Button buttonDOWN = new Button("Down");
+        Button buttonLEFT = new Button("Left");
+        Button buttonRIGHT = new Button("Right");
+
+        directionButtons.add(buttonUP);
+        directionButtons.add(buttonDOWN);
+        directionButtons.add(buttonLEFT);
+        directionButtons.add(buttonRIGHT);
+
+        Button specialUP = new Button("Special Up");
+        Button specialDOWN = new Button("Special Down");
+        Button specialLEFT = new Button("Special Left");
+        Button specialRIGHT = new Button("Special Right");
+
+        specialDirectionButtons.add(specialUP);
+        specialDirectionButtons.add(specialDOWN);
+        specialDirectionButtons.add(specialLEFT);
+        specialDirectionButtons.add(specialRIGHT);
+
+        HBox hBox = new HBox(10);
+        hBox.setStyle("-fx-border-color: #c9c9f5");
+        hBox.setPadding(new Insets(10, 10, 10, 10));
+        hBox.setAlignment(Pos.CENTER);
+
+        HBox specialBox = new HBox(10);
+        specialBox.setStyle("-fx-border-color: #c9c9f5");
+        specialBox.setPadding(new Insets(10, 10, 10, 10));
+        specialBox.setAlignment(Pos.CENTER);
+
+        hBox.getChildren().add(buttonUP);
+        hBox.getChildren().add(buttonDOWN);
+        hBox.getChildren().add(buttonLEFT);
+        hBox.getChildren().add(buttonRIGHT);
+
+        specialBox.getChildren().add(specialUP);
+        specialBox.getChildren().add(specialDOWN);
+        specialBox.getChildren().add(specialLEFT);
+        specialBox.getChildren().add(specialRIGHT);
+
+        applyStyleForButtons(directionButtons);
+        applyStyleForButtons(specialDirectionButtons);
+
+        addSpecialDirectionButtonsFunctionality();
+        addDirectionButtonsFunctionality();
+
+        VBox root = new VBox();
+        root.getChildren().add(hBox);
+        root.getChildren().add(specialBox);
+        root.setAlignment(Pos.CENTER);
+        VBox.setMargin(root, new Insets(40, 40, 40, 40));
+
+        gpane.add(root, 1, 6, 4, 10);
+        gpane.setAlignment(Pos.CENTER);
 
         // TODO: Task 2.1, Add an HBox for the movement buttons, an HBox for the ability buttons and add them to a VBox. Add the VBox to the gridPane.
 
+        Scene scene = new Scene(gpane, 600, 600);
         // Stage setup.
         stage.setScene(scene);
         stage.setTitle("Game");
@@ -68,6 +150,18 @@ public class Game extends Application {
      */
     private void applyStyleForButtons(List<Button> buttonsList) {
         // TODO: Task 1.2, Movement buttons configuration.
+
+        for (int i=0; i < buttonsList.size(); i++) {
+
+            buttonsList.get(i).setTextAlignment(TextAlignment.CENTER);
+            buttonsList.get(i).setStyle("-fx-background-color: rgb(236,172,111); " +
+                    "-fx-border-color: rgba(0,0,0,0.9);");
+
+        }
+
+        /*
+        buttonsList.stream().map(b -> b.setStyle("-fx-background-color: rgba(244, 67, 54, 0.75); " +
+                "-fx-border-color: rgba(255, 255, 255, 0.9);")).collect(Collectors.toList()); */
     }
 
     /**
@@ -76,6 +170,24 @@ public class Game extends Application {
      */
     private void addDirectionButtonsFunctionality() {
         // TODO: Task 1.2, Movement buttons configuration.
+        /*
+        switch(expression) {
+            case expression.UP:
+                directionButtons.get(1).onMouseClickedProperty();
+                break;
+            case expression.DOWN:
+                directionButtons.get(1).onMouseClickedProperty();
+                break;
+            case expression.LEFT:
+                directionButtons.get(1).onMouseClickedProperty();
+                break;
+            case expression.RIGHT:
+                directionButtons.get(1).onMouseClickedProperty();
+                break;
+            default:
+                // code block
+        }*/
+
     }
 
     /**
@@ -84,6 +196,7 @@ public class Game extends Application {
      */
     private void addSpecialDirectionButtonsFunctionality() {
         // TODO: Task 1.3, Ability buttons configuration.
+
     }
 
     /**
@@ -95,7 +208,7 @@ public class Game extends Application {
             for (int j = 0; j < gameBoard.getSizeY(); j++) {
                 // TODO: Task 1.1
                 // Uncomment this line, once you have implemented Task 1
-                // buttons[i][j].setText(String.valueOf(gameBoard.get(i, j)));
+                buttons[i][j].setText(String.valueOf(gameBoard.get(i, j)));
             }
         }
     }
@@ -158,6 +271,7 @@ public class Game extends Application {
      */
     private void informationAlert(String title, String content) {
         // TODO: Task 2.2, Displaying information alerts.
+
     }
 
     /**
