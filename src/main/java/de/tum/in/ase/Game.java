@@ -2,7 +2,6 @@ package de.tum.in.ase;
 
 import de.tum.in.ase.logic.*;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -10,10 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Game extends Application {
     private GameBoard gameBoard;
@@ -69,8 +66,6 @@ public class Game extends Application {
 
                 gpane.add(button, i, j);
 
-                //gpane.setAlignment(Pos.CENTER);
-
             }
 
         }
@@ -97,12 +92,11 @@ public class Game extends Application {
 
         HBox hBox = new HBox(10);
         hBox.setStyle("-fx-border-color: #c9c9f5");
-        hBox.setPadding(new Insets(10, 10, 10, 10));
         hBox.setAlignment(Pos.CENTER);
 
         HBox specialBox = new HBox(10);
         specialBox.setStyle("-fx-border-color: #c9c9f5");
-        specialBox.setPadding(new Insets(10, 10, 10, 10));
+
         specialBox.setAlignment(Pos.CENTER);
 
         hBox.getChildren().add(buttonUP);
@@ -125,7 +119,6 @@ public class Game extends Application {
         root.getChildren().add(hBox);
         root.getChildren().add(specialBox);
         root.setAlignment(Pos.CENTER);
-        VBox.setMargin(root, new Insets(40, 40, 40, 40));
 
         gpane.add(root, 1, 6, 4, 10);
         gpane.setAlignment(Pos.CENTER);
