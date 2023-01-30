@@ -11,6 +11,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game extends Application {
     private GameBoard gameBoard;
@@ -175,32 +176,45 @@ public class Game extends Application {
 
         for (int i = 0; i < directionButtons.size(); i++) {
 
-            /*if (directionButtons.get(i) != se) {
-
-            }*/
+            if (Objects.equals(directionButtons.get(i).getText(), "Up")) {
+                directionButtons.get(i).setOnAction(action -> {
+                    try {
+                        move('U');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(directionButtons.get(i).getText(), "Down")) {
+                directionButtons.get(i).setOnAction(action -> {
+                    try {
+                        move('D');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(directionButtons.get(i).getText(), "Left")) {
+                directionButtons.get(i).setOnAction(action -> {
+                    try {
+                        move('L');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(directionButtons.get(i).getText(), "Right")) {
+                directionButtons.get(i).setOnAction(action -> {
+                    try {
+                        move('R');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
 
         }
-
-
-        //Arrays.stream(buttons).parallel().filter(buttons1 -> buttons1.).map(buttons1 -> buttons1) .setOnAction(action -> move());
-
-        /*
-        switch(expression) {
-            case expression.UP:
-                directionButtons.get(1).onMouseClickedProperty();
-                break;
-            case expression.DOWN:
-                directionButtons.get(1).onMouseClickedProperty();
-                break;
-            case expression.LEFT:
-                directionButtons.get(1).onMouseClickedProperty();
-                break;
-            case expression.RIGHT:
-                directionButtons.get(1).onMouseClickedProperty();
-                break;
-            default:
-                // code block
-        }*/
 
     }
 
@@ -210,6 +224,47 @@ public class Game extends Application {
      */
     private void addSpecialDirectionButtonsFunctionality() {
         // TODO: Task 1.3, Ability buttons configuration.
+        for (int i = 0; i < specialDirectionButtons.size(); i++) {
+
+            if (Objects.equals(specialDirectionButtons.get(i).getText(), "Special Up")) {
+                specialDirectionButtons.get(i).setOnAction(action -> {
+                    try {
+                        hero.useSpecialPower('U');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(specialDirectionButtons.get(i).getText(), "Special Down")) {
+                specialDirectionButtons.get(i).setOnAction(action -> {
+                    try {
+                        hero.useSpecialPower('D');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(specialDirectionButtons.get(i).getText(), "Special Left")) {
+                specialDirectionButtons.get(i).setOnAction(action -> {
+                    try {
+                        hero.useSpecialPower('L');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            } else if (Objects.equals(specialDirectionButtons.get(i).getText(), "Special Right")) {
+                specialDirectionButtons.get(i).setOnAction(action -> {
+                    try {
+                        hero.useSpecialPower('R');
+                        updateUI();
+                    } catch (IllegalMoveException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+
+        }
 
     }
 
