@@ -153,11 +153,11 @@ public class Game extends Application {
     private void applyStyleForButtons(List<Button> buttonsList) {
         // TODO: Task 1.2, Movement buttons configuration.
 
-        for (int i=0; i < buttonsList.size(); i++) {
+        for (int i = 0; i < buttonsList.size(); i++) {
 
             buttonsList.get(i).setTextAlignment(TextAlignment.CENTER);
-            buttonsList.get(i).setStyle("-fx-background-color: rgb(236, 172, 111); " +
-                    "-fx-border-color: rgba(0, 0, 0, 0.9);");
+            buttonsList.get(i).setStyle("-fx-background-color: rgb(236, 172, 111); "
+                    + "-fx-border-color: rgba(0, 0, 0, 0.9);");
 
         }
 
