@@ -6,13 +6,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Game extends Application {
@@ -47,12 +44,11 @@ public class Game extends Application {
         this.gameBoard = new GameBoard(SIZE_X, SIZE_Y);
 
         // TODO: Task 1.1, Initialization of the gameBoard visualization.
-        GridPane gpane = new GridPane();
 
-        gpane.setHgap(3);
-        gpane.setVgap(2);
+        gridPane.setHgap(3);
+        gridPane.setVgap(2);
 
-        gpane.setAlignment(Pos.CENTER);
+        gridPane.setAlignment(Pos.CENTER);
 
         directionButtons = new ArrayList<>();
         specialDirectionButtons = new ArrayList<>();
@@ -68,7 +64,7 @@ public class Game extends Application {
                         "-fx-border-color: rgba(255, 255, 255, 0.9);");
                 buttons[i][j] = button;
 
-                gpane.add(button, i, j);
+                gridPane.add(button, i, j);
 
             }
 
@@ -94,23 +90,23 @@ public class Game extends Application {
         specialDirectionButtons.add(specialLEFT);
         specialDirectionButtons.add(specialRIGHT);
 
-        HBox hBox = new HBox(15);
+        firstControlButtonsRow = new HBox(15);
         //hBox.setStyle("-fx-border-color: #c9c9f5");
-        hBox.setAlignment(Pos.CENTER);
+        firstControlButtonsRow.setAlignment(Pos.CENTER);
 
-        HBox specialBox = new HBox(15);
+        secondControlButtonsRow = new HBox(15);
         //specialBox.setStyle("-fx-border-color: #c9c9f5");
-        specialBox.setAlignment(Pos.CENTER);
+        secondControlButtonsRow.setAlignment(Pos.CENTER);
 
-        hBox.getChildren().add(buttonUP);
-        hBox.getChildren().add(buttonDOWN);
-        hBox.getChildren().add(buttonLEFT);
-        hBox.getChildren().add(buttonRIGHT);
+        firstControlButtonsRow.getChildren().add(buttonUP);
+        firstControlButtonsRow.getChildren().add(buttonDOWN);
+        firstControlButtonsRow.getChildren().add(buttonLEFT);
+        firstControlButtonsRow.getChildren().add(buttonRIGHT);
 
-        specialBox.getChildren().add(specialUP);
-        specialBox.getChildren().add(specialDOWN);
-        specialBox.getChildren().add(specialLEFT);
-        specialBox.getChildren().add(specialRIGHT);
+        secondControlButtonsRow.getChildren().add(specialUP);
+        secondControlButtonsRow.getChildren().add(specialDOWN);
+        secondControlButtonsRow.getChildren().add(specialLEFT);
+        secondControlButtonsRow.getChildren().add(specialRIGHT);
 
         applyStyleForButtons(directionButtons);
         applyStyleForButtons(specialDirectionButtons);
@@ -120,8 +116,8 @@ public class Game extends Application {
 
         VBox boxes = new VBox();
         boxes.setSpacing(10);
-        boxes.getChildren().add(hBox);
-        boxes.getChildren().add(specialBox);
+        boxes.getChildren().add(firstControlButtonsRow);
+        boxes.getChildren().add(secondControlButtonsRow);
         boxes.setAlignment(Pos.CENTER);
 
         VBox root = new VBox();
@@ -130,7 +126,7 @@ public class Game extends Application {
         //label1.setFont(new Font("SF Fedora Shadow", 40));
         //label1.setStyle("-fx-text-fill: rgb(236, 172, 111);");
         //root.getChildren().add(label1);
-        root.getChildren().add(gpane);
+        root.getChildren().add(gridPane);
         root.getChildren().add(boxes);
         root.setAlignment(Pos.CENTER);
 
@@ -138,7 +134,7 @@ public class Game extends Application {
 
         // TODO: Task 2.1, Add an HBox for the movement buttons, an HBox for the ability buttons and add them to a VBox. Add the VBox to the gridPane.
 
-        Scene scene = new Scene(root, 600, 600);
+        this.scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         // Stage setup.
         stage.setScene(scene);
         stage.setTitle("Game");
