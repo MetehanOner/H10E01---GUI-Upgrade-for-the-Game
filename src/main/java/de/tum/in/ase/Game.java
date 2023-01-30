@@ -64,7 +64,6 @@ public class Game extends Application {
                 button.setStyle("-fx-background-color: rgb(245,187,184); "
                         + "-fx-border-color: rgba(255, 255, 255, 0.9);");
                 buttons[i][j] = button;
-
                 gridPane.add(button, i, j);
 
             }
@@ -174,6 +173,15 @@ public class Game extends Application {
     private void addDirectionButtonsFunctionality() {
         // TODO: Task 1.2, Movement buttons configuration.
 
+        for (int i = 0; i < directionButtons.size(); i++) {
+
+            /*if (directionButtons.get(i) != se) {
+
+            }*/
+
+        }
+
+
         //Arrays.stream(buttons).parallel().filter(buttons1 -> buttons1.).map(buttons1 -> buttons1) .setOnAction(action -> move());
 
         /*
@@ -210,6 +218,7 @@ public class Game extends Application {
      * gridPane.
      */
     private void updateUI() {
+
         for (int i = 0; i < gameBoard.getSizeX(); i++) {
             for (int j = 0; j < gameBoard.getSizeY(); j++) {
                 // TODO: Task 1.1
@@ -217,6 +226,7 @@ public class Game extends Application {
                 buttons[i][j].setText(String.valueOf(gameBoard.get(i, j)));
             }
         }
+
     }
 
     /**
