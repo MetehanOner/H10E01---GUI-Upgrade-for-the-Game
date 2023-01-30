@@ -6,10 +6,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game extends Application {
@@ -49,6 +52,8 @@ public class Game extends Application {
         gpane.setHgap(3);
         gpane.setVgap(2);
 
+        gpane.setAlignment(Pos.CENTER);
+
         directionButtons = new ArrayList<>();
         specialDirectionButtons = new ArrayList<>();
 
@@ -62,7 +67,6 @@ public class Game extends Application {
                 button.setStyle("-fx-background-color: rgba(244, 67, 54, 0.75); " +
                         "-fx-border-color: rgba(255, 255, 255, 0.9);");
                 buttons[i][j] = button;
-                button.setAlignment(Pos.CENTER);
 
                 gpane.add(button, i, j);
 
@@ -90,13 +94,12 @@ public class Game extends Application {
         specialDirectionButtons.add(specialLEFT);
         specialDirectionButtons.add(specialRIGHT);
 
-        HBox hBox = new HBox(10);
-        hBox.setStyle("-fx-border-color: #c9c9f5");
+        HBox hBox = new HBox(15);
+        //hBox.setStyle("-fx-border-color: #c9c9f5");
         hBox.setAlignment(Pos.CENTER);
 
-        HBox specialBox = new HBox(10);
-        specialBox.setStyle("-fx-border-color: #c9c9f5");
-
+        HBox specialBox = new HBox(15);
+        //specialBox.setStyle("-fx-border-color: #c9c9f5");
         specialBox.setAlignment(Pos.CENTER);
 
         hBox.getChildren().add(buttonUP);
@@ -115,17 +118,27 @@ public class Game extends Application {
         addSpecialDirectionButtonsFunctionality();
         addDirectionButtonsFunctionality();
 
+        VBox boxes = new VBox();
+        boxes.setSpacing(10);
+        boxes.getChildren().add(hBox);
+        boxes.getChildren().add(specialBox);
+        boxes.setAlignment(Pos.CENTER);
+
         VBox root = new VBox();
-        root.getChildren().add(hBox);
-        root.getChildren().add(specialBox);
+        root.setSpacing(15);
+        Label label1 = new Label("Indiana Jones ITP :)");
+        label1.setFont(new Font("SF Fedora Shadow", 40));
+        label1.setStyle("-fx-text-fill: rgb(236, 172, 111);");
+        root.getChildren().add(label1);
+        root.getChildren().add(gpane);
+        root.getChildren().add(boxes);
         root.setAlignment(Pos.CENTER);
 
-        gpane.add(root, 1, 6, 4, 10);
-        gpane.setAlignment(Pos.CENTER);
+        root.setStyle("-fx-background-color: rgb(86,44,2);");
 
         // TODO: Task 2.1, Add an HBox for the movement buttons, an HBox for the ability buttons and add them to a VBox. Add the VBox to the gridPane.
 
-        Scene scene = new Scene(gpane, 600, 600);
+        Scene scene = new Scene(root, 600, 600);
         // Stage setup.
         stage.setScene(scene);
         stage.setTitle("Game");
@@ -147,8 +160,8 @@ public class Game extends Application {
         for (int i=0; i < buttonsList.size(); i++) {
 
             buttonsList.get(i).setTextAlignment(TextAlignment.CENTER);
-            buttonsList.get(i).setStyle("-fx-background-color: rgb(236,172,111); " +
-                    "-fx-border-color: rgba(0,0,0,0.9);");
+            buttonsList.get(i).setStyle("-fx-background-color: rgb(236, 172, 111); " +
+                    "-fx-border-color: rgba(0, 0, 0, 0.9);");
 
         }
 
@@ -163,6 +176,9 @@ public class Game extends Application {
      */
     private void addDirectionButtonsFunctionality() {
         // TODO: Task 1.2, Movement buttons configuration.
+
+        //Arrays.stream(buttons).parallel().filter(buttons1 -> buttons1.).map(buttons1 -> buttons1) .setOnAction(action -> move());
+
         /*
         switch(expression) {
             case expression.UP:
