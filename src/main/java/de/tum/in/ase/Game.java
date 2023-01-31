@@ -230,6 +230,10 @@ public class Game extends Application {
                 specialDirectionButtons.get(i).setOnAction(action -> {
                     try {
                         hero.useSpecialPower('U');
+                        if (isWon()) {
+                            informationAlert("You won!", "You won the game!");
+                            restart();
+                        }
                         updateUI();
                     } catch (IllegalMoveException e) {
                         throw new RuntimeException(e);
@@ -239,6 +243,10 @@ public class Game extends Application {
                 specialDirectionButtons.get(i).setOnAction(action -> {
                     try {
                         hero.useSpecialPower('D');
+                        if (isWon()) {
+                            informationAlert("You won!", "You won the game!");
+                            restart();
+                        }
                         updateUI();
                     } catch (IllegalMoveException e) {
                         throw new RuntimeException(e);
@@ -248,6 +256,10 @@ public class Game extends Application {
                 specialDirectionButtons.get(i).setOnAction(action -> {
                     try {
                         hero.useSpecialPower('L');
+                        if (isWon()) {
+                            informationAlert("You won!", "You won the game!");
+                            restart();
+                        }
                         updateUI();
                     } catch (IllegalMoveException e) {
                         throw new RuntimeException(e);
@@ -257,6 +269,10 @@ public class Game extends Application {
                 specialDirectionButtons.get(i).setOnAction(action -> {
                     try {
                         hero.useSpecialPower('R');
+                        if (isWon()) {
+                            informationAlert("You won!", "You won the game!");
+                            restart();
+                        }
                         updateUI();
                     } catch (IllegalMoveException e) {
                         throw new RuntimeException(e);
