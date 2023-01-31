@@ -347,7 +347,6 @@ public class Game extends Application {
             alert.setContentText(content);
             alert.showAndWait();
 
-
     }
 
     /**
